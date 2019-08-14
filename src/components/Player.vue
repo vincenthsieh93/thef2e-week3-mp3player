@@ -38,7 +38,9 @@
         </div>
       </div>
     </div>
-    <div class="player__middle"></div>
+    <div class="player__middle">
+      <span class="player__initial"></span>
+    </div>
     <div class="player__bottom"></div>
   </div>
 </template>
@@ -80,11 +82,20 @@ export default {
 
   &__middle {
     flex: 1;
+    display: flex;
+    align-items: center;
     background: transparent linear-gradient(180deg, #AFC5FF 0%, #FACEFF 100%) 0% 0% no-repeat padding-box;
   }
 
   &__bottom {
     flex: 1;
+  }
+
+  &__initial {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, .5);
   }
 }
 
