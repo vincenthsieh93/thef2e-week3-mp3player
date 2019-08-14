@@ -11,12 +11,30 @@
               <h1 class="music__album">Ambitions</h1>
               <p class="music__singer">ELPHNT</p>
               <div class="music__repertoire">
-                <i></i>
+                <FontAwesomeIcon :icon="iconHeadphones" />
                 <h2>Sunn Forest</h2>
               </div>
             </div>
           </div>
-          <div class="music__function"></div>
+          <div class="music__function">
+            <div class="music__function-top">
+              <button class="music__playlist">
+                <FontAwesomeIcon :icon="iconList" />
+              </button>
+            </div>
+            <div class="music__function-bottom">
+              <button class="music__mode-btn">
+                <FontAwesomeIcon :icon="iconSyncAlt" />
+              </button>
+              <i class="music__mode-line"></i>
+              <button class="music__mode-btn">
+                <FontAwesomeIcon :icon="iconRandom" />
+              </button>
+              <button class="music__mode-btn">
+                <FontAwesomeIcon :icon="iconRetweet" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -26,10 +44,25 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faHeadphones, faList, faSyncAlt, faRandom, faRetweet } from "@fortawesome/free-solid-svg-icons";
+
 export default {
   name: "Player",
   props: {
     msg: String
+  },
+  data() {
+    return {
+      iconHeadphones: faHeadphones,
+      iconList: faList,
+      iconSyncAlt: faSyncAlt,
+      iconRandom: faRandom,
+      iconRetweet: faRetweet
+    }
+  },
+  components: {
+    FontAwesomeIcon
   }
 };
 </script>
@@ -118,20 +151,14 @@ export default {
   }
 
   &__repertoire {
+    font-size: 24px;
     display: flex;
     align-items: center;
-
-    > i {
-      display: block;
-      width: 22px;
-      height: 24px;
-      background-color: #B6C6FF;
-    }
+    color: #B6C6FF;
 
     > h2 {
       flex: 1;
       min-width: 0;
-      font-size: 24px;
       line-height: 33px;
       letter-spacing: 0;
       text-align: left;
@@ -139,12 +166,56 @@ export default {
       white-space: nowrap;
       overflow: hidden;
       padding-left: 21px;
-      color: #B6C6FF;
     }
   }
 
   &__function {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 264px;
+
+    &-top {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    &-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__playlist {
+    font-size: 40px;
+    line-height: 0;
+    display: block;
+    color: #6A65AC;
+    background-color: transparent;
+
+    &:hover {
+      color: #E9E9E9;
+    }
+  }
+
+  &__mode-btn {
+    font-size: 40px;
+    line-height: 0;
+    display: block;
+    color: #B6C6FF;
+    background-color: transparent;
+
+    &:hover {
+      color: #FFF;
+    }
+  }
+
+  &__mode-line {
+    display: block;
+    width: 1px;
+    height: 45px;
+    background-color: #B6C6FF;
   }
 }
 </style>
